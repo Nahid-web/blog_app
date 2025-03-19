@@ -1,7 +1,9 @@
+import 'package:blog_app/core/routes/routes.dart';
 import 'package:blog_app/core/theme/app_palette.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -59,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).pushNamed('/signup');
+                      context.push(RouteNames.signUp);
                     },
                     child: RichText(
                       text: TextSpan(
