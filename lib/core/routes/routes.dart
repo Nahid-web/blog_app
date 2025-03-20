@@ -1,4 +1,3 @@
-import 'package:blog_app/core/pages/error_page.dart';
 import 'package:blog_app/features/auth/presentation/pages/login_page.dart';
 import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
 import 'package:flutter/material.dart';
@@ -24,5 +23,7 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const LoginPage(),
     ),
   ],
-  errorPageBuilder: (context, state) => MaterialPage(child: const ErrorPage()),
+  errorPageBuilder:
+      (context, state) =>
+          MaterialPage(child: const Center(child: Text("error"))),
 );

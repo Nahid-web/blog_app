@@ -1,8 +1,10 @@
 import 'package:blog_app/core/routes/routes.dart';
 import 'package:blog_app/core/theme/app_palette.dart';
+import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -57,7 +59,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   buttonText: 'Sign Up',
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      // Sign up logic here
+                      context.read<AuthBloc>().add(
+                        AuthSignUp(
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                          name: nameController.text.trim(),
+                        ),
+                      );
                     }
                   },
                 ),
