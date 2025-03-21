@@ -12,7 +12,7 @@ class RouteNames {
 
 // GoRouter configuration
 final GoRouter router = GoRouter(
-  initialLocation: RouteNames.signUp,
+  initialLocation: RouteNames.login,
   routes: [
     GoRoute(
       path: RouteNames.signUp,
