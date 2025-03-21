@@ -10,7 +10,7 @@ abstract interface class AuthRemoteDataSource {
     required String password,
   });
 
-  Future<UserModel> signInWithEmailAndPassword({
+  Future<UserModel> loginWithEmailAndPassword({
     required String email,
     required String password,
   });
@@ -22,11 +22,26 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   AuthRemoteDataSourceImpl(this.supabaseClient);
 
   @override
-  Future<UserModel> signInWithEmailAndPassword({
+  Future<UserModel> loginWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
-    return UserModel(id: 'id', email: '', name: 'name');
+    try {
+      final response = await supabaseClient.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
+
+      debugPrint('response ${response.user}}');
+
+      if (response.user == null) {
+        throw const ServerException("User not found");
+      }
+      return UserModel.fromJson(response.user!.toJson());
+    } catch (e) {
+      debugPrint("Error during login: $e");
+      throw ServerException(e.toString());
+    }
   }
 
   @override
@@ -42,7 +57,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         data: {'name': name},
       );
 
-      debugPrint('response $response.user}');
+      debugPrint('response ${response.user}}');
 
       if (response.user == null) {
         throw const ServerException("User not created");
