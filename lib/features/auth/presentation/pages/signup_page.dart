@@ -1,4 +1,4 @@
-import 'package:blog_app/core/common/loader.dart';
+import 'package:blog_app/core/common/widgets/loader.dart';
 import 'package:blog_app/core/routes/routes.dart';
 import 'package:blog_app/core/theme/app_palette.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
