@@ -14,7 +14,6 @@ class RouteNames {
 
 // GoRouter configuration
 final GoRouter router = GoRouter(
-  initialLocation: RouteNames.login,
   redirect: (context, state) {
     final appUserState = BlocProvider.of<AppUserCubit>(context).state;
 
