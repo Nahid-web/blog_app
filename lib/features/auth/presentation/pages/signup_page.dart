@@ -42,7 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
               if (state is AuthFailure) {
                 showSnackBar(context, state.message);
               } else if (state is AuthSuccess) {
-                context.go(RouteNames.home);
+                context.go(RouteNames.blog);
               }
             },
             builder: (context, state) {
