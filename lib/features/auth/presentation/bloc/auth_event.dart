@@ -17,3 +17,5 @@ final class AuthLogIn extends AuthEvent {
 
   AuthLogIn({required this.email, required this.password});
 }
+
+final class AuthIsUserLoggedIn extends AuthEvent {}
